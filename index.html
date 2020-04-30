@@ -23,10 +23,11 @@
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="#one" class="active">About</a></li>
-						<li><a href="#two">Things I Can Do</a></li>
-						<li><a href="#three">A Few Accomplishments</a></li>
-						<li><a href="#four">Contact</a></li>
+						<li><a href="#one" class="active">Johdanto</a></li>
+						<li><a href="#two">Oppimistavoitteet</a></li>
+						<li><a href="#three">Toteutunut oppiminen</a></li>
+						<li><a href="#four">Suuret osa-alueet</a></li>
+						<li><a href="#last">Contact</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -64,115 +65,81 @@
 										<p>Mainittakoon tässä alussa kuitenkin se, että kevätlukukauden alussa, en ollut tehnyt Unityn kanssa oikeastaan mitään melkein vuoteen ja aloitimme aluksi toisen ohjelmoijan, Aleksi Rajamäen, kanssa herättelemällä vanhoja taitoja pariohjelmoijalla, jolla saimme molemmat hyvän startin projektille, mutta oikeastaan ensimmäisen sprintin jälkeen jaoimme molemmille omat osa-alueet, joihin keskityimme.
 										</p>
 										<p>Kurssin aikana olemme kuitenkin kyselleet ja autelleet toisiamme, jos on tullut jotain askarruttavia haasteita. Ohjelmoinnissa on ollut myös myöhemmin kuvaan astunut kolmas ohjelmoija, Henri TODO: Sukunimi, jonka osaamista on myös hyödynnetty hänen omissa osa-alueissaan, sekä koodareiden keskenäisessä vuorovaikutuksessa syntynyttä keskenäistä auttamista ja ongelman ratkontaa.
-										</p>
-										<h3>2. Oppimistavoitteet projektissa</h3>
-										<p>
-										DemoLabin aikana halusin oppia lisää ohjelmoinnista, sekä pelien näkökulmasta, että yleisesti ohjelmointiin liittyvistä haasteista ja niiden ratkaisemisesta. Halusin oppia tekemään toimivaa, selkeää ja tehokasta koodia, mikä toimisi mahdollisimman universaailsti, ilman kovakoodia tai niin kutsuttua ”spagettia”.	
-										</p>
-
-										<h3>3. Toteutunut oppiminen</h3>
-										<p>Projektin omia osa-alueitani tutkiessa, voin huomata, että olen kehittynyt ohjelmoijana ja olen edistynyt tavoitteissani. Oppimistavoitteiden lisäksi olen oppinut asioita mm. ryhmätyöskentelystä, projektityöskentelystä, ongelman ratkonnasta ja etätyöskentelystä.</p>
-									
-										<h3>4. Tuottamani suuremmat osa-aluuet</h3>
-										<p>Suurimmat asiat mihin keskityin projektissa olivat:</p>
-										<ul>
-											<li>Dialogi (Unity, C#, YarnSpinner)</li>
-											<li>Inventory (Unity, C#)</li>
-											<li>Pause Menu (Unity, C#, Photoshop)</li>
-										</ul>
-
-										<h4>4.1. Dialogi</h4>
-										<p>ASD</p>
-
-										<h4>4.2. Inventory</h4>
-										<p>ASD</p>
-										<pre><code class="csharp">
-public class CustomButton : Button
-{
-	public Item esine;
-	public Text statsiBoxi;
-	public InventoryDisplayer inv;
-
-	public void OnClick()
-	{
-		var osa = esine as Part;
-		if (osa != null)
-		{
-			statsiBoxi.text = osa.name + "\nDMG : " + osa.DMG + "\nACC : " + osa.ACC + "\nROF : " + osa.ROF + "\nMAX AMMO : " + osa.MAX_AMMO;
-		}
-		inv.selectedItem = esine;
-	}
-}								
-										</code></pre>
-
-										<h4>4.3. PauseMenu</h4>
-										<p>ASD</p>
-
+										</p>					
 								</div>
 							</section>
 
 						<!-- Two -->
 							<section id="two">
 								<div class="container">
-									<h3>Things I Can Do</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
-									<ul class="feature-icons">
-										<li class="icon solid fa-code">Write all the code</li>
-										<li class="icon solid fa-cubes">Stack small boxes</li>
-										<li class="icon solid fa-book">Read books and stuff</li>
-										<li class="icon solid fa-coffee">Drink much coffee</li>
-										<li class="icon solid fa-bolt">Lightning bolt</li>
-										<li class="icon solid fa-users">Shadow clone technique</li>
-									</ul>
+									<h3>2. Oppimistavoitteet projektissa</h3>
+										<p>
+										DemoLabin aikana halusin oppia lisää ohjelmoinnista, sekä pelien näkökulmasta, että yleisesti ohjelmointiin liittyvistä haasteista ja niiden ratkaisemisesta. Halusin oppia tekemään toimivaa, selkeää ja tehokasta koodia, mikä toimisi mahdollisimman universaailsti, ilman kovakoodia tai niin kutsuttua ”spagettia”.	
+										</p>
 								</div>
 							</section>
 
 						<!-- Three -->
 							<section id="three">
 								<div class="container">
-									<h3>A Few Accomplishments</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-									</div>
+									<h3>3. Toteutunut oppiminen</h3>
+									<p>Projektin omia osa-alueitani tutkiessa, voin huomata, että olen kehittynyt ohjelmoijana ja olen edistynyt tavoitteissani. Oppimistavoitteiden lisäksi olen oppinut asioita mm. ryhmätyöskentelystä, projektityöskentelystä, ongelman ratkonnasta ja etätyöskentelystä.</p>
 								</div>
 							</section>
 
 						<!-- Four -->
-							<section id="four">
-								<div class="container">
-									<h3>Contact Me</h3>
-									<p>You can contact me with email or from the links below!</p>
-									<p>m2241@student.jamk.fi </br>
-									<a href="https://twitter.com/ilefti">Twitter</a></br>
-									<a href="https://fi.linkedin.com/in/ilkka-s%C3%A4kkinen-a99044176">LinkedIn</a> </br>
-									<a href="https://github.com/Lefti90">GitHub</a></p>
-								</div>
-							</section>
+						<section id="four">
+							<div class="container">
+								<h3>4. Tuottamani suuremmat osa-aluuet</h3>
+								<p>Suurimmat asiat mihin keskityin projektissa olivat:</p>
+								<ul>
+									<li>Dialogi (Unity, C#, YarnSpinner)</li>
+									<li>Inventory (Unity, C#)</li>
+									<li>Pause Menu (Unity, C#, Photoshop)</li>
+								</ul>
+
+								<h4>4.1. Dialogi</h4>
+								<p>ASD</p>
+
+								<h4>4.2. Inventory</h4>
+								<p>ASD</p>
+								<pre><code class="csharp">
+public class CustomButton : Button
+{
+public Item esine;
+public Text statsiBoxi;
+public InventoryDisplayer inv;
+
+public void OnClick()
+{
+var osa = esine as Part;
+if (osa != null)
+{
+	statsiBoxi.text = osa.name + "\nDMG : " + osa.DMG + "\nACC : " + osa.ACC + "\nROF : " + osa.ROF + "\nMAX AMMO : " + osa.MAX_AMMO;
+}
+inv.selectedItem = esine;
+}
+}								
+								</code></pre>
+
+								<h4>4.3. PauseMenu</h4>
+								<p>ASD</p>
+							</div>
+						</section>
 
 						<!-- Five -->
-					</div>
 
+				<!-- Last -->
+				<section id="last">
+					<div class="container">
+						<h3>Contact Me</h3>
+						<p>You can contact me with email or from the links below!</p>
+						<p>m2241@student.jamk.fi </br>
+						<a href="https://twitter.com/ilefti">Twitter</a></br>
+						<a href="https://fi.linkedin.com/in/ilkka-s%C3%A4kkinen-a99044176">LinkedIn</a> </br>
+						<a href="https://github.com/Lefti90">GitHub</a></p>
+					</div>
+				</section>
 				<!-- Footer -->
 					<section id="footer">
 						<div class="container">
