@@ -9,8 +9,8 @@
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite,
-code, del, dfn, em, img, ins, kbd, q, s, samp,
+/*pre,*/ a, abbr, acronym, address, big, cite,
+/*code,*/ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody,
@@ -83,7 +83,8 @@ input, select, textarea {
 	}
 
 	body {
-		background: #000000;
+		background-color: #222;
+		/*background: #bf5600*/
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -98,7 +99,9 @@ input, select, textarea {
 		}
 
 	body, input, select, textarea {
-		color: #888;
+		color: #ffffff;
+		/* Tekstin väri 
+				color: #888; */
 		font-family: "Lato", sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -117,7 +120,7 @@ input, select, textarea {
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #000000 !important;
+			color: #bf5600 !important;
 		}
 
 	strong, b {
@@ -152,8 +155,8 @@ input, select, textarea {
 	}
 
 	h3 {
-		font-size: 1.75em;
-		line-height: 1.5em;
+		font-size: 1.5em;
+		line-height: 1..25em;
 	}
 
 	h4 {
@@ -199,7 +202,7 @@ input, select, textarea {
 		margin: 0 0 2.25em 0;
 		padding: 0.5em 0 0.5em 2em;
 	}
-
+/*
 	code {
 		background: #555;
 		border-radius: 5px;
@@ -213,7 +216,7 @@ input, select, textarea {
 	pre {
 		font-family: "Source Code Pro", monospace;
 		font-size: 0.9em;
-		margin: 0 0 2.25em 0;
+		margin: 0 0 2.25em 0; 
 	}
 
 		pre code {
@@ -235,7 +238,7 @@ input, select, textarea {
 	.align-right {
 		text-align: right;
 	}
-
+*/
 /* Row */
 
 	.row {
@@ -1785,7 +1788,8 @@ input, select, textarea {
 	}
 
 	header.major h2 {
-		color: #4acaa8;
+		/*orggis color: #bf5600;*/
+		color: #bf5600;
 		font-size: 3.5em;
 	}
 
@@ -1848,7 +1852,7 @@ input, select, textarea {
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #4acaa8;
+			border-color: #bf5600;
 		}
 
 	select {
@@ -1953,7 +1957,7 @@ input, select, textarea {
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #4acaa8;
+			border-color: #bf5600;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -2402,7 +2406,7 @@ input, select, textarea {
 			}
 
 			ul.feature-icons li:before {
-				background: #4acaa8;
+				background: #bf5600;
 				border-radius: 100%;
 				color: #ffffff;
 				display: block;
@@ -2618,7 +2622,7 @@ input, select, textarea {
 		input[type="reset"].primary,
 		input[type="button"].primary,
 		.button.primary {
-			background-color: #4acaa8;
+			background-color: #bf5600;
 			color: #ffffff !important;
 		}
 
@@ -2653,7 +2657,7 @@ input, select, textarea {
 /* Features */
 
 	.features article {
-		border-top: solid 3px #f4f4f4;
+		border-top: solid 3px #bf5400;
 		margin-bottom: 2.25em;
 		padding-top: 2.25em;
 	}
@@ -2700,7 +2704,9 @@ input, select, textarea {
 		-webkit-justify-content: space-between;
 		-ms-justify-content: space-between;
 		justify-content: space-between;
-		background: #4acaa8;
+		background: rgb(14, 13, 13);
+		/*orggis background: #bf5600;
+		headerin taustaväri*/
 		color: #d2f2e9;
 		height: 100%;
 		overflow-y: auto;
@@ -2720,15 +2726,16 @@ input, select, textarea {
 			}
 
 		#header header p {
-			color: #b7eadc;
+			color: #bf5500;
+			/*color: #b7eadc;*/
 		}
 
 		#header a {
-			color: #d2f2e9;
+			color: #222;
 		}
 
 			#header a:hover {
-				color: #ffffff !important;
+				color: #bf5400 !important;
 			}
 
 		#header > header {
@@ -2751,7 +2758,7 @@ input, select, textarea {
 			}
 
 			#header > header p {
-				color: #d2f2e9;
+				color: #bf5400;
 				font-style: italic;
 				margin: 1em 0 0 0;
 			}
@@ -2772,7 +2779,7 @@ input, select, textarea {
 			}
 
 				#header > footer .icons li a {
-					color: #b7eadc;
+					color: #bf5400;
 				}
 
 		#header > nav {
@@ -2789,7 +2796,7 @@ input, select, textarea {
 			}
 
 				#header > nav ul li {
-					border-top: solid 2px #5ccfb1;
+					border-top: solid 2px #bf5400;
 					display: block;
 					padding: 0;
 				}
@@ -2807,8 +2814,8 @@ input, select, textarea {
 					}
 
 						#header > nav ul li a.active {
-							background: #fff;
-							color: #4acaa8 !important;
+							background: #222;
+							color: #bf5600 !important;
 						}
 
 					#header > nav ul li:first-child {
@@ -2818,14 +2825,15 @@ input, select, textarea {
 /* Wrapper */
 
 	#wrapper {
-		background: #fff;
+		/*Taustan väri*/
+		background: #222;
 		padding-right: 23em;
 	}
 
 /* Main */
 
 	#main > section {
-		border-top: solid 6px #f4f4f4;
+		border-top: solid 6px #bf5400;
 	}
 
 		#main > section > .container {
@@ -2839,7 +2847,7 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		background: #fafafa;
+		background: #000000;
 		border-top: 0;
 		color: #c0c0c0;
 		overflow: hidden;
@@ -3076,8 +3084,10 @@ input, select, textarea {
 					}
 
 					#titleBar .toggle:before {
-						background: #4acaa8;
-						color: #ffffff;
+						background: #bf5600
+						/* orggis väri
+						background: #bf5600;*/
+						color: #000000;
 						content: '\f0c9';
 						display: block;
 						font-size: 18px;
