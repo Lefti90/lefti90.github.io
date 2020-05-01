@@ -202,6 +202,10 @@ input, select, textarea {
 		margin: 0 0 2.25em 0;
 		padding: 0.5em 0 0.5em 2em;
 	}
+	pre{
+		font-size: small;
+		line-height: normal;
+	}
 /*
 	code {
 		background: #555;
@@ -3084,7 +3088,7 @@ input, select, textarea {
 					}
 
 					#titleBar .toggle:before {
-						background: #bf5600
+						background: #bf5600;
 						/* orggis väri
 						background: #bf5600;*/
 						color: #000000;
@@ -3113,8 +3117,6 @@ input, select, textarea {
 				-ms-transform: translateX(0);
 				transform: translateX(0);
 			}
-
-	}
 
 /* Small */
 

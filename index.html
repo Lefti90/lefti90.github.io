@@ -27,16 +27,14 @@
 						<li><a href="#two">Oppimistavoitteet</a></li>
 						<li><a href="#three">Toteutunut oppiminen</a></li>
 						<li><a href="#four">Suuret osa-alueet</a></li>
-						<li><a href="#last">Contact</a></li>
+						<li><a href="#last">Ota yhteyttä</a></li>
 					</ul>
 				</nav>
 				<footer>
 					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						<li><a href="https://twitter.com/ilefti" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://fi.linkedin.com/in/ilkka-s%C3%A4kkinen-a99044176" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Lefti90" class="icon brands fa-github"><span class="label">Github</span></a></li>
 					</ul>
 				</footer>
 			</section>
@@ -106,24 +104,69 @@
 								<pre><code class="csharp">
 public class CustomButton : Button
 {
-public Item esine;
-public Text statsiBoxi;
-public InventoryDisplayer inv;
+	public Item esine;
+	public Text statsiBoxi;
+	public InventoryDisplayer inv;
 
-public void OnClick()
-{
-var osa = esine as Part;
-if (osa != null)
-{
-	statsiBoxi.text = osa.name + "\nDMG : " + osa.DMG + "\nACC : " + osa.ACC + "\nROF : " + osa.ROF + "\nMAX AMMO : " + osa.MAX_AMMO;
-}
-inv.selectedItem = esine;
-}
+	public void OnClick()
+		{
+		var osa = esine as Part;
+		if (osa != null)
+			{
+				statsiBoxi.text = osa.name + "\nDMG : " + osa.DMG + "\nACC : " + osa.ACC + "\nROF : " + osa.ROF + "\nMAX AMMO : " + osa.MAX_AMMO;
+			}
+		inv.selectedItem = esine;
+		}
 }								
 								</code></pre>
 
 								<h4>4.3. PauseMenu</h4>
 								<p>ASD</p>
+								<p>Tässä alla lyhyt video, mistä voi nähdä menun toimintaa dungeonissa.</p>
+								<video width="640" height="480" controls>
+									<source src="videos/menuDemo1.mp4" type="video/mp4">
+								  Your browser does not support the video tag.
+								  </video>
+								<p>Menun animaatiot on toteutettu <a href="https://assetstore.unity.com/packages/tools/animation/leantween-3595"> LeanTweenillä</a> ja ne eivät ota TimeScalea huomioon, joten ne toimivat vaikka peli on muuten pysähtynyt</p>
+								<pre><code class="csharp">
+//Nappuloiden animaatiot PauseMenussa
+public class ButtonHilightScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
+    public GameObject nuoli;
+    public GameObject nappula;
+    public Image orgImg;
+    public Sprite orgSprite;
+    public Sprite HilightSprite;
+    private Vector2 hilightShadow = new Vector2(-19f, -18f);
+    private Vector2 normalShadow = new Vector2(-12f, -12f);
+
+    private void Awake()
+    {
+        nappula = this.gameObject;
+        orgImg = this.gameObject.GetComponent<Image>();
+        orgSprite = orgImg.sprite;
+        nuoli.SetActive(false);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        nuoli.SetActive(true);
+        nuoli.transform.LeanSetLocalPosY(this.transform.localPosition.y + 20f);
+        LeanTween.moveLocalX(nappula, 50f, 0.1f).setIgnoreTimeScale(true);
+        nappula.gameObject.GetComponent<Image>().overrideSprite = HilightSprite;
+        nappula.gameObject.GetComponent<Shadow>().effectDistance = hilightShadow;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        nuoli.SetActive(false);
+        LeanTween.moveLocalX(nappula, 0f, 0.1f).setIgnoreTimeScale(true);
+        nappula.gameObject.GetComponent<Image>().overrideSprite = orgSprite;
+        nappula.gameObject.GetComponent<Shadow>().effectDistance = normalShadow;
+    }
+}
+								</code></pre>
+								
 							</div>
 						</section>
 
@@ -132,8 +175,8 @@ inv.selectedItem = esine;
 				<!-- Last -->
 				<section id="last">
 					<div class="container">
-						<h3>Contact Me</h3>
-						<p>You can contact me with email or from the links below!</p>
+						<h3>Ota yhteyttä</h3>
+						<p>Voit ottaa minuun yhteyttä sähköpostitse tai sitten alla olevista linkeistä</p>
 						<p>m2241@student.jamk.fi </br>
 						<a href="https://twitter.com/ilefti">Twitter</a></br>
 						<a href="https://fi.linkedin.com/in/ilkka-s%C3%A4kkinen-a99044176">LinkedIn</a> </br>
@@ -144,7 +187,7 @@ inv.selectedItem = esine;
 					<section id="footer">
 						<div class="container">
 							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Ilkka Säkkinen - 2020. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
 					</section>
