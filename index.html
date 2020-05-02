@@ -120,7 +120,7 @@
 									Sitten toisena "objekti", eli mille objektille halutaan tehdä jotain esim. "thug2"</br>
 									Viimeisenä Yarn haluaa aina passata stringin, vaikka sitä ei tarvittaisi, mutta tässä tilanteessa "Left" on olennainen osa komentoa.</br>
 									Tässä esimerkissä "showFace" näyttää "thug2" nimisen naaman dialogin vasemmassa "Left" reunassa.</br>
-									Alla esimerkki Yarnista ja siihen tehdyistä komennoista</br></br>
+									Alla esimerkki Yarnista ja siihen tehdyistä komennoista. Scriptien alussa on kommentoitu, mitä ko. scripti tekee.</br></br>
 <!-- Koodi -->
 Test.yarn</br>
 <pre><code>
@@ -826,14 +826,21 @@ Alla olevassa videossa näkyy kuinka luodaan uusia itemeitä ja laitetaan niitä
 							<div class="container">
 
 								<h4>4.3. PauseMenu</h4>
-								<p>ASD</p>
-								<p>Tässä alla lyhyt video, mistä voi nähdä menun toimintaa dungeonissa.</p>
+								<p>PauseMenun on tehty pääosin UI:elementeistä, mutta mukaan haluttiin myös 3D-objekteja ja 3D-efektejä</br>
+									Tämä aiheutti sen, että Canvasta ei voinut pitää normaalina Overlay-elementtinä vaan menun piti ottaa huomioon kameran kuvakulma.</br>
+									PauseMenu on toteutettu kahdella eri kameralla, toinen on jossain maailman ulkopuolella ja menu on oikeasti sen kameran edessä.</br>
+									Tämän jälkeen toisen kameran kuvaama kuva heijastetaan pääkameran eteen, kun peli laitetaan Pauselle.</br></br>
+									Alunperin minun ei pitänyt tehdä menujen grafiikkaa, mutta se päätyi lopulta minun syliini, mikä on sinänsä ihan kiva, koska tykkään kuvankäsittelystä.</br>
+									Ari-Pekka teki alkuperäisen pohjan, josta sitten lähdin tekemään erilaisia variaatioita.</br>
+									Loppujen lopuksi teinkin kaikki taustat ja nappulat Photoshopissa ja sitten laittelin niihin varjoja ja muita tehosteita ja animaatioita Unityssä.</br></br>
+
+									Tässä alla onkin lyhyt video mistä voi katsella menun toimintaa dungeonissa.
 								<video width="90%" height="480" controls>
 									<source src="videos/menuDemo1.mp4" type="video/mp4">
 								  Your browser does not support the video tag.
 								  </video>
 								<p>Menun animaatiot on toteutettu <a href="https://assetstore.unity.com/packages/tools/animation/leantween-3595"> LeanTweenillä</a> ja ne eivät ota TimeScalea huomioon, joten ne toimivat vaikka peli on muuten pysähtynyt</p>
-								<pre><code class="csharp">
+<pre><code class="csharp">
 //Nappuloiden animaatiot PauseMenussa
 public class ButtonHilightScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -870,7 +877,345 @@ public class ButtonHilightScript : MonoBehaviour, IPointerEnterHandler, IPointer
         nappula.gameObject.GetComponent<Shadow>().effectDistance = normalShadow;
     }
 }
-								</code></pre>
+</code></pre>
+<!-- Koodi -->
+PauseMenuScript.cs</br>
+<pre><code class="csharp">
+//Tämä koodi vastaa siitä mitä tapahtuu kun peli laitetaan Pauselle
+public class PauseMenuScript : MonoBehaviour
+{
+	//Events
+	public UnityEvent pause;
+	public UnityEvent resume;
+
+	//GameStates
+	public static bool GamePaused = false;
+	public static bool OtherMenuOpen = false;
+
+	//Window Positions
+	public GameObject hiddenPos;
+	public GameObject activePos;
+
+	//Menu windows
+	public GameObject pauseMenuUi;
+	public GameObject weaponMenu;
+	public GameObject skillMenu;
+	public GameObject questMenu;
+	public GameObject rangedWMenu;
+	public GameObject itemMenu;
+	public GameObject settingsMenu;
+	public GameObject entitiesMenu;
+
+	//part change menu
+	public GameObject partMenu;
+	public RawImage partImgHolder;
+	public GameObject partObj;
+
+	//TODO: CloseMenuaspdok
+	public GameObject currentMenu;
+	public GameObject parentMenu;
+
+	private void Awake()
+	{
+		pauseMenuUi.SetActive(false);
+		weaponMenu.SetActive(false);
+		skillMenu.SetActive(false);
+		questMenu.SetActive(false);
+		rangedWMenu.SetActive(false);
+		itemMenu.SetActive(false);
+		settingsMenu.SetActive(false);
+		entitiesMenu.SetActive(false);
+		partMenu.SetActive(false);
+}
+	// Update is called once per frame
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			if (pauseMenuUi.activeSelf == true && pauseMenuUi.transform.position == activePos.transform.position)//GamePaused == true && OtherMenuOpen == false)
+			{
+				Debug.Log("Resume");
+				Resume();
+			}
+			else if (pauseMenuUi.activeSelf == false)//(GamePaused == false && OtherMenuOpen == false)
+			{
+				Debug.Log("Pause");
+				Pause();
+			}
+			else if (GamePaused == true && OtherMenuOpen == true)
+			{
+				Debug.Log("CloseCurrentMenu, Game paused: "+GamePaused+" OthermenuOpen: "+OtherMenuOpen);
+				CloseCurrentMenu();
+			}
+			else
+			{
+				Debug.Log("Else");
+				Debug.Log(GamePaused);
+				Debug.Log(OtherMenuOpen);
+				if (parentMenu != null)
+				{
+					parentMenu.tag = "DeactiveMenu";
+					parentMenu = null;
+				}
+			}
+		}
+	}
+
+	//Resume game
+	public void Resume()
+	{
+		resume.Invoke();
+		Time.timeScale = 1;
+		GamePaused = false;
+		OtherMenuOpen = false;
+		CloseCurrentMenu();
+	}
+	//Pause game
+	void Pause()
+	{
+		pause.Invoke();
+		pauseMenuUi.SetActive(true);
+		pauseMenuUi.tag = "CurrentMenu";
+		Time.timeScale = 0;
+		currentMenu = pauseMenuUi;
+		GamePaused = true;
+		OtherMenuOpen = true;
+	}
+
+	//Weapons
+	public void OpenWeaponMenu()
+	{
+		HideCurrentMenu();
+		weaponMenu.SetActive(true);
+		currentMenu = weaponMenu;
+		weaponMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		//laitetaan edellinen porras parentiksi
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+
+	//Skills
+	public void OpenSkillMenu()
+	{
+		HideCurrentMenu();
+		skillMenu.SetActive(true);
+		currentMenu = skillMenu;
+		skillMenu.tag = "CurrentMenu";       
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+
+	public void UpdateSkillTT()
+	{
+		//TODO: skill and entitylist
+		Debug.Log("TODO: Load skill name and tooltip");
+	}
+
+	//Quests
+	public void OpenQuestMenu()
+	{
+		HideCurrentMenu();
+		questMenu.SetActive(true);
+		currentMenu = questMenu;
+		questMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+
+	public void UpdateQuestTT()
+	{
+		//TODO: questlist
+		Debug.Log("TODO: Load quest name and tooltip");
+	}
+
+	//Ranged Weapon Menu
+	public void OpenRangedWMenu()
+	{
+		HideCurrentMenu();
+		rangedWMenu.SetActive(true);
+		currentMenu = rangedWMenu;
+		rangedWMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+	public void CloseRangedWMenu()
+	{
+		CloseCurrentMenu();
+		//TODO: Custom close mekaniikka
+		//Ladataan oikeat osat rangeWmenuun
+		//OpenPartsMenuAndLoad();
+		//parentMenu = currentMenu.transform.parent.gameObject;
+	}
+
+	//Vastaanotetaan ja laukaistaan PartChangeScriptissä
+	public void OpenPartsMenuAndLoad(GameObject part)
+	{
+		Debug.Log(part);
+		HideCurrentMenu();
+		partMenu.SetActive(true);
+		currentMenu = partMenu;
+		partMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+		//Haetaan kuva
+		RawImage partImg = part.GetComponent<RawImage>();
+		Debug.Log(partImg);
+		//ei tehdä dublicate clooneja
+		if(partObj == null)
+		{
+			partObj = (GameObject)Instantiate(part, partImgHolder.transform.position, Quaternion.identity, transform);
+		}
+			
+	}
+	public void PartMenuIsnpect(GameObject part)
+	{
+		Debug.Log("PartMenuInspect started");
+		//TODO: Hae part objectin tilalle tulevien itemien objektit "fitting objects tms"
+		string fittingPartTag = part.tag;
+		GameObject.FindWithTag(part.tag);
+		//TODO: Hae fitting objektien nimet, määrä ja desci ja kuva ja statsit...
+	}
+
+	public void ClosePartMenu()
+	{
+		//TODO: oma close mekaniikka
+		//Loadataan oikea osa
+		//HideCurrentMenu();
+		//partMenu.SetActive(false);
+		//rangedWMenu.SetActive(true);
+		//Destroy(partObj);
+		//ShowNewMenu();
+		CloseCurrentMenu();
+	}
+
+	//Items
+	public void OpenItemMenu()
+	{
+		HideCurrentMenu();
+		itemMenu.SetActive(true);
+		currentMenu = itemMenu;
+		itemMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+
+	//Settings
+	public void OpenSettingsMenu()
+	{
+		HideCurrentMenu();
+		settingsMenu.SetActive(true);
+		currentMenu = settingsMenu;
+		settingsMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+
+
+	//Entities
+	public void OpenEntitiesMenu()
+	{
+		HideCurrentMenu();
+		entitiesMenu.SetActive(true);
+		currentMenu = entitiesMenu;
+		entitiesMenu.tag = "CurrentMenu";
+		OtherMenuOpen = true;
+		if (currentMenu.transform.parent.gameObject != null)
+		{
+			Debug.Log("parent found");
+			parentMenu = currentMenu.transform.parent.gameObject;
+			parentMenu.tag = "ParentMenu";
+		}
+		ShowNewMenu();
+	}
+	//Save
+	public void SaveAndQuit()
+	{
+		//TODO: Save player stats
+		PlayerPrefs.Save();
+		Application.Quit();
+	}
+
+
+	//Universal close menu
+	public void CloseCurrentMenu()
+	{
+		////Jos part menu on aktiivinen, käytetään omaa metodia
+		//if (partMenu.activeSelf == true)
+		//    Destroy(partObj);
+
+		//Päivitetään parent sulkiessa
+		if (parentMenu == null || parentMenu.activeInHierarchy == false)
+		{
+			parentMenu = pauseMenuUi;
+		}
+		//else if(parentMenu == pauseMenuUi)
+		//{
+		//    OtherMenuOpen = true;
+		//}
+		else
+		{
+			parentMenu = currentMenu.transform.parent.gameObject;
+		}
+		currentMenu.SetActive(false);
+		parentMenu.tag = "ParentMenu";
+		parentMenu.transform.position = activePos.transform.position;
+		currentMenu = parentMenu;
+		currentMenu.tag = "CurrentMenu";
+	}
+
+	public void HideCurrentMenu()
+	{
+		currentMenu.transform.position = hiddenPos.transform.position;
+	}
+
+	public void ShowNewMenu()
+	{
+		currentMenu.transform.position = activePos.transform.position;
+	}
+}			
+</code></pre>
 								
 							</div>
 						</section>
