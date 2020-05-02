@@ -23,10 +23,13 @@
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="#one" class="active">Johdanto</a></li>
-						<li><a href="#two">Oppimistavoitteet</a></li>
-						<li><a href="#three">Toteutunut oppiminen</a></li>
-						<li><a href="#four">Suuret osa-alueet</a></li>
+						<li><a href="#one" class="active">1. Johdanto</a></li>
+						<li><a href="#two">2. Oppimistavoitteet</a></li>
+						<li><a href="#three">3. Toteutunut oppiminen</a></li>
+						<li><a href="#four">4. Suuret osa-alueet</a></li>
+						<li><a href="#four1">&gt; 4.1. Dialogi</a></li>
+						<li><a href="#four2">&gt; 4.2. Inventory</a></li>
+						<li><a href="#four3">&gt; 4.3. PauseMenu</a></li>
 						<li><a href="#last">Ota yhteyttä</a></li>
 					</ul>
 				</nav>
@@ -62,7 +65,7 @@
 																				</p>
 										<p>Mainittakoon tässä alussa kuitenkin se, että kevätlukukauden alussa, en ollut tehnyt Unityn kanssa oikeastaan mitään melkein vuoteen ja aloitimme aluksi toisen ohjelmoijan, Aleksi Rajamäen, kanssa herättelemällä vanhoja taitoja pariohjelmoijalla, jolla saimme molemmat hyvän startin projektille, mutta oikeastaan ensimmäisen sprintin jälkeen jaoimme molemmille omat osa-alueet, joihin keskityimme.
 										</p>
-										<p>Kurssin aikana olemme kuitenkin kyselleet ja autelleet toisiamme, jos on tullut jotain askarruttavia haasteita. Ohjelmoinnissa on ollut myös myöhemmin kuvaan astunut kolmas ohjelmoija, Henri TODO: Sukunimi, jonka osaamista on myös hyödynnetty hänen omissa osa-alueissaan, sekä koodareiden keskenäisessä vuorovaikutuksessa syntynyttä keskenäistä auttamista ja ongelman ratkontaa.
+										<p>Kurssin aikana olemme kuitenkin kyselleet ja autelleet toisiamme, jos on tullut jotain askarruttavia haasteita. Ohjelmoinnissa on ollut myös myöhemmin kuvaan astunut kolmas ohjelmoija, Henri Kinnunen, jonka osaamista on myös hyödynnetty hänen omissa osa-alueissaan, sekä koodareiden keskenäisessä vuorovaikutuksessa syntynyttä keskenäistä auttamista ja ongelman ratkontaa.
 										</p>					
 								</div>
 							</section>
@@ -95,35 +98,374 @@
 									<li>Inventory (Unity, C#)</li>
 									<li>Pause Menu (Unity, C#, Photoshop)</li>
 								</ul>
-
+							</div>
+						</section>
+						<section id="four1">
+							<div class="container">
 								<h4>4.1. Dialogi</h4>
 								<p>ASD</p>
-
+							</div>
+						</section>
+						<section id="four2">
+							<div class="container">
 								<h4>4.2. Inventory</h4>
-								<p>ASD</p>
-								<pre><code class="csharp">
+								<p>Yksi isoimmista ja haastavimmista asioista projektin suhteen minulle oli "Inventoryn" ja siihen liittyvien asioiden kehittäminen.</br></br>
+									No mikä on inventory?</br></br>
+									Se on esinevarasto, mihin pelaajan keräämät esineet varastoidaan.</br></br>
+									Kuulostaa helpolta, mutta tähän liittyy paljon erilaisia muuttujia.</br></br>
+									Ensimmäinen ongelma: Päätin tehdä inventoryn "ScriptableObject:lla" (jatkossa SO). En ollut ikinä ennen kuullutkaan niistä, mutta Henri ehdotti sitä ja se vaikutti järkevältä, mitä se lopuksi olikin.</br></br>
+									Aluksi minun piti opetella mitä SO:t ovat ja miten niitä käytetään. Lähdin tekemään ensimmäistä versioita suoraan sitä mukaan mitä opin, mutta koska olin ymmärtänyt asioita väärin, jouduin aloittamaan alusta.</br></br>
+									Seuraavan version ajattelin aloittaa tekemällä oman tyhjän projektin missä voin harjoitella SO:den käyttämistä. Tämä oli hyvä ja seurasin ohjeita tutoriaalista. Tutoriaali oli kuitenkin niin monimutkainen, että kun luulin tajunneeni, kuinka voin soveltaa tutoriaalin oppeja projektiin, meni sormi taas suuhun.</br></br>
+									Kolmannen kerran ajattelin, että nyt en katso mistään mallia ja teen niin yksinkertaisen version kun vain osaan. Tämä koituikin hyväksi taktiikaksi, kunnes seinä tuli taas vastaan. Onneksi olin pitänyt projektin niin yksinkertaisena, että kun pyysin Henriltä apua, hän osasi suoraan neuvoa miten voisin jalostaa projektia eteenpäin. </br></br>
+									<video width="90%" height="480" controls>
+										<source src="videos/weaponInventoryVer3.mp4" type="video/mp4">
+									  Your browser does not support the video tag.
+									  </video></br>
+									Kolmas versio alkoikin olla toimiva, jonka integroin oikeaan projektiin.</br></br>
+									Vaikka integrointi oikeaan projektiin ei tapahtunutkaan aivan nappia painamalla, ei siinä tullut suurempia haasteita vastaan.</br>
+									Yhdistämisen jälkeen aloin päivittämään ulkoasua projektin tyylin mukaiseksi, tämä olikin hyvin paljon vain kuvien vaihtamista sopiviin.</br></br>
+								  <video width="90%" height="480" controls>
+									<source src="videos/weaponInventory1.mp4" type="video/mp4">
+								  Your browser does not support the video tag.
+								  </video>
+								</br>
+									Ulkoasun päivityksen jälkeen ja koodien linkittäminen oikeisiin kohtiin, asesysteemi alkoikin olla valmis.</br></br>
+									Tähän alle liitän hieman erilaisia scriptejä mitkä liittyvät inventoryyn.</br>
+									Koodin alussa kommentoituna mitä mikäkin scripti tekee.</p>
+<p>
+Item.cs</br>
+<pre><code class="csharp">
+//Jokainen pelin itemi, joka voidaan poimia pelissä, aloitetaan tällä pohjalla
+[CreateAssetMenu(fileName = "Item", menuName = "Item")]
+public class Item : ScriptableObject
+{
+	[Space, Header("Item Name")]
+	public new string name;
+	[Space, Header("Item Type")]
+	public ItemType partID;
+	[Space, Header("Menu Image")]
+	public Sprite partImage;
+	[Space, Header("3D Model")]
+	public GameObject model;
+	[Space, Header("Ignore this")]
+	public Vector2 offSet;
+}							
+</code></pre>
+Part.cs</br>
+<pre><code class="csharp">
+//Aseen osat perivät Item SO:n osat, mutta niille voi antaa myös statseja
+//Jos Part on tehty oikein, sen ItemType (Item.ItemId) se voidaan myös asettaa aseeseen, esim piipuksi
+[CreateAssetMenu(fileName = "Part", menuName = "Part")]
+public class Part : Item
+{
+	public bool equipped;
+
+	[Space, Header("Stats")]
+	public float ROF;
+	public float DMG;
+	public float ACC;
+	public float MAX_AMMO;
+}				
+</code></pre>
+Inventory.cs</br>
+<pre><code class="csharp">
+//Peliin voidaan luoda useita Inventoryjä
+//Pelaajan omistetut itemit laitetaan "InventoryOwned" -SO:n sisälle
+[CreateAssetMenu(fileName = "Inventory", menuName = "Inventory")]
+public class InventorySO : ScriptableObject
+{
+	[Header("Here comes all items that player has picked up")]
+	public List&lt;Item> ownedItems = new List&lt;Item>();
+}		
+</code></pre>
+Weapon.cs</br>
+<pre><code class="csharp">
+//Aseen SO:ssa käsitellään Partit, mitä voidaan yhdistää aseeseen
+//Scripti katsoo mitä Part:ia ollaan laittamassa ja yhdistää sen aseen oikeaan kohtaan ja
+//ottaa mukanaan statsit ja muut tiedot, mitä se sisältää
+[CreateAssetMenu(fileName = "Weapon", menuName = "Weapon")]
+public class WeaponSO : ScriptableObject
+{
+	public new string name;
+	public ItemType partID;
+	public Part barrel;
+	public Part handguard;
+	public Part body;
+	public Part stock;
+	public Part handle;
+	public Part mag;
+	public Part sights;
+
+	[Space, Header("Stats")]
+	public float ROF;
+	public float DMG;
+	public float ACC;
+	public float MAX_AMMO;
+
+	public void EquipPart(Part partToEquip)
+	{
+		switch (partToEquip.partID)
+		{
+			case ItemType.Barrel:
+				if (barrel != null)
+					barrel.equipped = false;
+				barrel = partToEquip;
+				barrel.equipped = true;
+				break;
+			case ItemType.HandGuard:
+				if (handguard != null)
+					handguard.equipped = false;
+				handguard = partToEquip;
+				handguard.equipped = true;
+				break;
+			case ItemType.Body:
+				if (body != null)
+					body.equipped = false;
+				body = partToEquip;
+				body.equipped = true;
+				break;
+			case ItemType.Stock:
+				if (stock != null)
+					stock.equipped = false;
+				stock = partToEquip;
+				stock.equipped = true;
+				break;
+			case ItemType.Handle:
+				if (handle != null)
+					handle.equipped = false;
+				handle = partToEquip;
+				handle.equipped = true;
+				break;
+			case ItemType.Magazine:
+				if (mag != null)
+					mag.equipped = false;
+				mag = partToEquip;
+				mag.equipped = true;
+				break;
+			case ItemType.Sights:
+				if (sights != null)
+					sights.equipped = false;
+				sights = partToEquip;
+				sights.equipped = true;
+				break;
+			default:
+				Debug.Log("Error finding the button");
+				break;
+		}
+		UpdateWeaponStats();
+	}
+	public void UpdateWeaponStats()
+	{
+		//Yhdistetään statsit
+		ROF = barrel.ROF + handguard.ROF + body.ROF + stock.ROF + handle.ROF + mag.ROF + sights.ROF;
+
+		DMG = barrel.DMG + handguard.DMG + body.DMG + stock.DMG + handle.DMG + mag.DMG + sights.DMG;
+
+		ACC = barrel.ACC + handguard.ACC + body.ACC + stock.ACC + handle.ACC + mag.ACC + sights.ACC;
+
+		MAX_AMMO = barrel.MAX_AMMO + handguard.MAX_AMMO + body.MAX_AMMO + stock.MAX_AMMO + handle.MAX_AMMO + mag.MAX_AMMO + sights.MAX_AMMO;
+	}
+}			
+</code></pre>
+InventoryDisplayer.cs</br>
+<pre><code class="csharp">
+	//Mahdolliset ItemTyypit
+	public enum ItemType
+	{
+		Barrel,
+		HandGuard,
+		Body,
+		Stock,
+		Handle,
+		Magazine,
+		Sights,
+		Item
+	}
+	
+	//InventoryDisplayer käsittelee mitä itemeitä näytetään ja missä
+	public class InventoryDisplayer : MonoBehaviour
+	{
+		public InventorySO inventory;
+		public GameObject buttonPrefab;
+		public GameObject panelToAttachButtonsTo;
+		public List&lt;Item> displayedItems = new List&lt;Item>();
+		public Text statText;
+		public Item selectedItem;
+		public UseButtonScript useBtn;
+		public WeaponSO weapon;
+	
+		private Vector3 btnPos = new Vector3(0, 0, 0);
+		private Vector3 btnScale = new Vector3(1, 1, 1);
+	
+		public void DisplayEquippableItems(int itemSlotID)
+		{
+			//Tyhjätään lista
+			foreach (Button button in panelToAttachButtonsTo.transform.GetComponentsInChildren&lt;Button>())
+			{
+				Destroy(button.gameObject);
+			}
+			displayedItems.Clear();
+	
+			//Täytetään lista ItemTypen mukaan
+			foreach (var Item in inventory.ownedItems)
+			{            
+				if (Item.partID == (ItemType)itemSlotID)
+				{               
+					displayedItems.Add(Item);
+				}
+				else
+				Debug.Log("ItemSlot error");
+			}
+	
+			//Luodaan napit "Fitting parts" -kohtaan Ylläolevasta listasta
+			foreach (var Item in displayedItems)
+			{
+				GameObject button = (GameObject)Instantiate(buttonPrefab);
+				//Asetetaan parent
+				button.transform.SetParent(panelToAttachButtonsTo.transform);
+				var customButton = button.GetComponent&lt;CustomButton>();
+				//Mitä luotu nappula tekee OnClick
+				customButton.onClick.AddListener(customButton.OnClick);
+				customButton.esine = Item;
+				customButton.statsiBoxi = statText;
+				customButton.inv = this;
+				//vaihdetaan kuva
+				((Image)customButton.targetGraphic).sprite = Item.partImage;
+				//laitetaan kuva oikeaan kohtaan
+				customButton.transform.localPosition = btnPos;
+				//scaalataan oikein
+				customButton.transform.localScale = btnScale;
+			}
+	
+		}
+		//Luodun nappulan actionit
+		void OnClick()
+		{
+			//CustomButton.cs
+		}
+	}			
+</code></pre>
+UseButtonScript.cs</br>
+<pre><code class="csharp">
+//Ohjaa mitä tapahtuu, kun valittu osa käytetään valikossa
+public class UseButtonScript : MonoBehaviour
+{
+	public InventoryDisplayer inv;
+	public WeaponSO weapon;
+	public WeaponStatsUpdater wsu;
+	public WeaponUI weaponUI;
+
+	private void Awake()
+	{
+		wsu.WeaponStatUpdate();
+		weaponUI.UpdateWeaponImages();
+	}
+	public void UseBtnClick()
+	{
+		var osa = inv.selectedItem as Part;
+		if (osa != null)
+		{
+			weapon.EquipPart(osa);
+			wsu.WeaponStatUpdate();
+			weaponUI.UpdateWeaponImages();
+		}
+	}
+}		
+</code></pre>
+WeaponUI.cs</br>
+<pre><code class="csharp">
+//Päivittää oikeat kuvat aseeseen
+public class WeaponUI : MonoBehaviour
+{
+	public Button b0;
+	public Button b1;
+	public Button b2;
+	public Button b3;
+	public Button b4;
+	public Button b5;
+	public Button b6;
+
+	public WeaponSO weapon;
+
+	public void UpdateWeaponImages()
+	{
+		((Image)b0.targetGraphic).sprite = weapon.barrel.partImage;
+		((Image)b1.targetGraphic).sprite = weapon.handguard.partImage;
+		((Image)b2.targetGraphic).sprite = weapon.body.partImage;
+		((Image)b3.targetGraphic).sprite = weapon.stock.partImage;
+		((Image)b4.targetGraphic).sprite = weapon.handle.partImage;
+		((Image)b5.targetGraphic).sprite = weapon.mag.partImage;
+		((Image)b6.targetGraphic).sprite = weapon.sights.partImage;
+	}
+}		
+</code></pre>
+WeaponStatsUpdater.cs</br>
+<pre><code class="csharp">
+//Päivittää aseen statsit menussa
+public class WeaponStatsUpdater : MonoBehaviour
+{
+	public Text statsit;
+	public WeaponSO equippedWeapon;
+
+	public void WeaponStatUpdate()
+	{
+		statsit.text = " DMG : " + equippedWeapon.DMG + "\n ACC : " + equippedWeapon.ACC + "\n ROF : " + equippedWeapon.ROF + "\n MAX AMMO : " + equippedWeapon.MAX_AMMO;
+	}
+}		
+</code></pre>
+CustomButton.cs</br>
+<pre><code class="csharp">
+//Custom nappula, joka luodaan Part:n tietojen mukaan
 public class CustomButton : Button
 {
 	public Item esine;
 	public Text statsiBoxi;
 	public InventoryDisplayer inv;
 
+	//Haetaan Part:n tiedot ja päivitetään ne menussa
 	public void OnClick()
-		{
+	{
 		var osa = esine as Part;
 		if (osa != null)
-			{
-				statsiBoxi.text = osa.name + "\nDMG : " + osa.DMG + "\nACC : " + osa.ACC + "\nROF : " + osa.ROF + "\nMAX AMMO : " + osa.MAX_AMMO;
-			}
-		inv.selectedItem = esine;
+		{
+			statsiBoxi.text = osa.name + "\nDMG : " + osa.DMG + "\nACC : " + osa.ACC + "\nROF : " + osa.ROF + "\nMAX AMMO : " + osa.MAX_AMMO;
 		}
-}								
-								</code></pre>
+		inv.selectedItem = esine;
+	}
+}		
+</code></pre>
+<!-- Koodi -->
+ButtonEditor.cs</br>
+<pre><code class="csharp">
+//Helpottaa editorissa selailua mikä osa CustomButtonissa on kiinni
+[CustomEditor(typeof(CustomButton))]
+public class ButtonEditor : Editor
+{
+	public override void OnInspectorGUI()
+	{
+		var button = target as CustomButton;
+		EditorGUILayout.ObjectField(button.esine, typeof(Item),true);
+		EditorGUILayout.ObjectField(button.statsiBoxi, typeof(UnityEngine.UI.Text), true);
+		base.OnInspectorGUI();
+	}
+}			
+</code></pre>
+Alla olevassa videossa näkyy kuinka luodaan uusia itemeitä ja laitetaan niitä pelaajan inventoryyn. Todellisuudessa itemeitä ei laiteta inventoryyn käsin, vaan ne menevät sinne kun pelaaja poimii niitä pelistä. </br>
+<!-- Video -->
+<video width="90%" height="480" controls>
+    <source src="videos/inventoryDemo1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+</p>
+							</div>
+						</section>
+						<section id="four3">
+							<div class="container">
 
 								<h4>4.3. PauseMenu</h4>
 								<p>ASD</p>
 								<p>Tässä alla lyhyt video, mistä voi nähdä menun toimintaa dungeonissa.</p>
-								<video width="640" height="480" controls>
+								<video width="90%" height="480" controls>
 									<source src="videos/menuDemo1.mp4" type="video/mp4">
 								  Your browser does not support the video tag.
 								  </video>
@@ -195,7 +537,7 @@ public class ButtonHilightScript : MonoBehaviour, IPointerEnterHandler, IPointer
 			</div>
 
 		<!-- Scripts -->
-			<link rel="stylesheet" href="assets/styles/monokai-sublime.css">	
+			<link rel="stylesheet" href="assets/styles/androidstudio.css">	
 			<script src="assets/js/highlight.pack.js"></script>
 			<script>hljs.initHighlightingOnLoad();</script>
 			<script src="assets/js/jquery.min.js"></script>
