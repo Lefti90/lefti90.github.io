@@ -202,8 +202,9 @@ input, select, textarea {
 		margin: 0 0 2.25em 0;
 		padding: 0.5em 0 0.5em 2em;
 	}
+	/*OMA*/
 	pre{
-		font-size: small;
+		font-size: large;
 		line-height: normal;
 	}
 /*

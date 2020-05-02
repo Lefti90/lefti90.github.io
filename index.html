@@ -103,7 +103,370 @@
 						<section id="four1">
 							<div class="container">
 								<h4>4.1. Dialogi</h4>
-								<p>ASD</p>
+								<p>Projektin alussa pariohjelmointi toimi hetken, mutta kun molemmat olimme päässeet vauhtiin, se ollut enää tehokasta tai järkevää. Täten jaoimme omat osa-alueet ja tein hetken aikaa peliin UI:n liittyviä asioita.</br></br>
+									Tämän jälkeen PO:mme Ari-Pekka Savoilainen sanoi, että voisin ruveta kehittämään järjestelmää, millä tarinaa vietäisiin eteenpäin. Hän oli löytänyt netistä Unityn kanssa toimivan dailogi-pluginin mihin tarinan kirjoittaminen olisi helppoa ja sen voisi liittää suoraan unityyn.</br>
+									En enää muista ohjelman nimeä, mutta nopeasti kävi ilmi, että unityn puolella tämä ko. plugin oli aika kömpelö.</br>
+									Onneksi naapuritoimiston Niko Tervo oli löytänyt toisen pluginin nimeltään YarnSpinner (jatkossa Yarn), mitä hän käytti projektissaan Senpai Garden.</br>
+									Niko antoikin hyviä neuvoja, jotta pääsin alkuun Yarnin kanssa.</br></br>
+
+									YarnSpinner on siis oma scriptauskielensä ja se pystyy kommunikoimaan Unityn kanssa. Hieman kömpelön syntaxin takia, Yarnin opettelu vei hieman aikaa, mutta lopulta se on aika yksinkertainen kieli.</br></br>
+
+									Suurin osa työstä Yarnin kanssa olikin opettelua, sekä "CustomCommand":en tekoa.</br></br>
+
+									Yarnin "YarnCommands":it toimivat seuraavasti &lt;&lt;komento objekti string&gt;&gt;. </br>
+									Esimerkki: </br>
+									&lt;&lt;showFace thug2 Left&gt;&gt;
+									Eli aluksi "komento" haetaan "YarnCommands.cs":tiedostosta esim. "showFace".</br>
+									Sitten toisena "objekti", eli mille objektille halutaan tehdä jotain esim. "thug2"</br>
+									Viimeisenä Yarn haluaa aina passata stringin, vaikka sitä ei tarvittaisi, mutta tässä tilanteessa "Left" on olennainen osa komentoa.</br>
+									Tässä esimerkissä "showFace" näyttää "thug2" nimisen naaman dialogin vasemmassa "Left" reunassa.</br>
+									Alla esimerkki Yarnista ja siihen tehdyistä komennoista</br></br>
+<!-- Koodi -->
+Test.yarn</br>
+<pre><code>
+	title: Start
+	tags: 
+	colorID: 0
+	position: 73,-611
+	---
+	&lt;&lt;showFace thug2 Left>>
+	Angry thug: You came looking for trouble here?!
+	-> ...
+	&lt;&lt;showFace thug1 Right>>
+		Angry thug: I ask you only once more, you came looking for trouble??
+		-> ...
+			[[ Trouble ]]
+		-> I came to clear thing up
+		   [[ Clearthingsup ]]
+	-> I was sent to make thing straight here
+		[[ Clearthingsup ]]
+	
+	===
+	title: Trouble
+	tags: 
+	colorID: 0
+	position: -488,191
+	---
+	&lt;&lt;showFace thug3 Center>>
+	Angry thug: I fucking dare you to stay like that even one more second
+	-> ...
+	&lt;&lt;showFace thug1 Right>>
+		Angry thug:You little shit head asked for this
+		Angry thug shot you and you lost some of your health
+		&lt;&lt;hideFace thug1 Right>>
+		[[ Taistelu ]] 
+	-> I'm not talking to your barrel, lower your weapon
+		&lt;&lt;showFace thug2 Right>>
+		Angry thug: You are not the one making demands here, you are on our ground now.
+		[[ Ourground ]] 
+	===
+	title: Clearthingsup
+	tags: 
+	colorID: 0
+	position: 345,-309
+	---
+	&lt;&lt;showFace thug2 Right>>
+	Angry thug: You were sent by who?
+	-> None of your business, just why matters
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug: You think this is a motherfucking game? You were sent by who?
+		[[Sentbywho]] 
+	-> I was sent by people you all are opressing
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug: Those pests are going to learn it the hard way why we are here!
+		[[Pests]] 
+		
+	===
+	title: Sentbywho
+	tags: 
+	colorID: 0
+	position: 296,132
+	---
+	&lt;&lt;showFace thug1 Right>>
+	-> Like I said, it doesn't matter
+		Angry thug: Oh it matters alright, we don't tolerate anyone trying to push us around here
+		-> We can still work this out without anyone getting hurt, including you
+			[[ Withoutviolence ]] 
+		-> Do you tolerate bullets then?
+			[[ Taistelu ]] 
+	-> By the people who you are hurting and harming
+		Angry thug: Oh yes, those roaches are going to get hurt even more thanks to you
+		[[ Pests ]]
+		
+	===
+	title: Pests
+	tags: 
+	colorID: 0
+	position: 1188,-415
+	---
+	&lt;&lt;showFace thug1 Right>>
+	-> We can still clear this up without sorting to violence
+		Angry thug: I think time is tad too late for that now!
+		[[ Withoutviolence ]] 
+	-> That won't happen if you are six feet under
+		&lt;&lt;showFace thug4 Right>>
+		Angry thug: OH SHIT!
+		[[ Taistelu ]] 
+		
+	===
+	title: Ourground
+	tags: 
+	colorID: 0
+	position: -6,139
+	---
+	&lt;&lt;showFace thug2 Right>>
+	Angry thug: So, you are here why?
+	-> I was sent to clear things up
+		[[ Clearthingsup ]]
+	-> To take care of fuck heads like you who likes to play little mayors
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug: You'll regret that
+		[[ Taistelu ]] 
+		
+	===
+	title: Taistelu
+	tags: 
+	colorID: 0
+	position: 868,746
+	---
+	&lt;&lt;changeScene BGChanger SampleScene>>
+	
+	===
+	title: Withoutviolence
+	tags: 
+	colorID: 0
+	position: 578,194
+	---
+	&lt;&lt;showFace thug2 Right>>
+	Angry thug: I give you ten seconds to reason why we wouldn't do things our way. The efficient way.
+	-> Because I can make your business run more smoothly and effiently just if I'm given control
+		[[ JoinTheGang ]] 
+	-> We will be undoing your luciferian towers.
+		Angry thug: That is some bullshit if I've ever heard one. 
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug. But enough talk, have at you!
+		[[ Taistelu ]] 
+	
+	===
+	title: JoinTheGang
+	tags: 
+	colorID: 0
+	position: 858,194
+	---
+	&lt;&lt;showFace thug3 Right>>
+	Angry thug: What the fuck is your game?
+	-> Like I said, I can help you
+		[[ Helping ]] 
+	-> I won't talk to minions, who is in charge here?
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug: You won't last long enough to know that!
+		[[ Taistelu ]] 
+	
+	===
+	title: Helping
+	tags: 
+	colorID: 0
+	position: 1284,239
+	---
+	&lt;&lt;showFace thug3 Right>>
+	Angry thug: Clear things up and you better know that I don't tolerate any fuckery!
+	-> I know the people who sent me, I know their weak points
+		&lt;&lt;showFace thug2 Right>>
+		Angry thug: You peaked my interest.
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug: But you also peaked my limits, I've had shit heads like you shot before!
+	-> I won't share that sort of info to minions.
+		&lt;&lt;showFace thug1 Right>>
+		Angry thug: Then you'll share your grave with the people you are so trying to protect!
+	[[ Taistelu ]] 
+	===
+				
+</code></pre>
+
+<!-- Koodi -->
+YarnCommands.cs</br>
+<pre><code class="csharp">
+//Tänne tulevat kaikki YarnSpinnerin itse tehdyt "CustomCommand":it
+public class YarnCommands : MonoBehaviour
+{
+	//taustakuvan liikutus
+	string activateNext;
+	private TargetManagerScript targetManager;
+	private SetNewTarget setNewTarget;
+
+	//naamakuvan liikutus
+	[SerializeField] private moveImageScript mis;
+	//naamat esiin ja piiloon
+	public GameObject faceImage;
+	public RawImage image;
+	//scenen vaihto
+	private void Awake()
+	{
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
+		targetManager = GameObject.FindObjectOfType<TargetManagerScript>();
+		setNewTarget = GameObject.FindObjectOfType<SetNewTarget>();
+	}
+	//vaihdetaan taustakuva
+	[YarnCommand("bg_Change")]
+	public void setActive1(string bg_Change)
+	{
+		Debug.Log("bg_Change: " + bg_Change);
+		activateNext = "bg_Change";
+		//lähetetään setNewTargetille uusi target
+		setNewTarget.ChangeTarget(bg_Change);
+	}
+	//näytetään naama
+	[YarnCommand("showFace")]
+	public void showFaceImage(string position)
+	{
+		mis = null;
+		//naaman Imagen alpha ykköseksi
+		Debug.Log("showFace "+position);
+		image = faceImage.GetComponent<RawImage>();
+		Debug.Log("AAAAAAAAAAAAAAAAAAAA: " + image.name);
+		var tempColor = image.color;
+		tempColor.a = 1;
+		image.color = tempColor;
+		//lähetetään moveImageScriptille position ja itse objekti
+		mis = GameObject.FindObjectOfType<moveImageScript>();
+		mis.moveImage(position, faceImage);
+	}
+	//piilotetaan naama
+	[YarnCommand("hideFace")]
+	public void hideFaceImage(string position)
+	{
+		//naaman Imagen alpha nollaksi
+		//Debug.Log("hideFace: "+position);
+		image = faceImage.GetComponent<RawImage>();
+		var tempColor = image.color;
+		tempColor.a = 0;
+		image.color = tempColor;
+	}
+	//Vaihdetaan sceneä
+	[YarnCommand("changeScene")]
+	public void changeScene(string scene)
+	{
+		ShangeScenes shangeScenes;
+		shangeScenes = GameObject.FindObjectOfType<ShangeScenes>();
+		shangeScenes.SceneShanging(scene);
+	}
+}				
+</code></pre>
+<!-- Video -->
+Dialogi jossa olet kohdannut vihollisen</br>
+<video width="90%" height="480" controls>
+    <source src="videos/Yarn1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<!-- Koodi -->
+MoveImageScript.cs</br>
+<pre><code class="csharp">
+//Tämä scripti vastaa naamojen kuvien siirtelystä
+//Kuvan paikat ja muut tulevat "YarnCommands.cs":stä
+public class moveImageScript : MonoBehaviour
+{
+	[SerializeField] private Transform facePosLeft;
+	[SerializeField] private Transform facePosCenter;
+	[SerializeField] private Transform facePosRight;
+	[SerializeField] private Transform facePosHidden;
+	[SerializeField] private GameObject _imageObj;
+	[SerializeField] private string newpos;
+	[SerializeField] private string currentPos;
+
+
+	/// <summary>
+	/// Dialogin naamojen siirtäminen
+	/// </summary>
+	/// <param name="position"> Vastaanotetaan string: YarnCommands.cs </param>
+	/// <param name="imageObject"> Vastaanotetaan GameObject: YarnCommand.cs </param>
+	public void moveImage(string position, GameObject imageObject)
+	{
+		var posTaken = GameObject.FindGameObjectWithTag("Face" + position);
+		if (posTaken != null)
+		{
+			//siirretään vanha kuva hiddeniin
+			posTaken.transform.position = facePosHidden.position;
+			posTaken.tag = "FaceHidden";
+		}
+		else
+		{
+			Debug.Log("error in moveImageScript");
+		}
+		//lopuksi siirretään kuva paikalleen
+		newpos = position;
+		_imageObj = imageObject;
+		currentPos = position;
+		imageObject.tag = "Face" + position;
+		Debug.Log("set position: " + position);
+		#region Positions
+		if (position == "Center")
+		{
+			imageObject.transform.position = facePosCenter.position;
+		}
+		else if (position == "Left")
+		{
+			imageObject.transform.position = facePosLeft.position;
+		}
+		else if (position == "Right")
+		{
+
+			imageObject.transform.position = facePosRight.position;
+		}
+		else if (position == "Hidden")
+		{
+			imageObject.transform.position = facePosHidden.position;
+		}
+		else
+		{
+			Debug.Log("Error in face position");
+		}
+		#endregion
+	}
+}				
+</code></pre>
+<!-- Koodi -->
+TargetManagerScript.cs</br>
+<pre><code class="csharp">
+//Tämä kuva liikuttaa taustakuvia dialogissa
+//Tiedot tulevat "YarnCommands.cs":stä
+public class TargetManagerScript : MonoBehaviour
+{
+	public Transform prevTarget;
+	public Transform currentTarget;
+	public Transform nextTarget;
+	public GameObject imgLibrary;
+
+	//Yarnilta aktivoitavan kuvan nimi
+	public string imageName;
+
+	private MoveTargetScript moveTargetScript;
+
+	private void Awake()
+	{
+		moveTargetScript = GameObject.FindObjectOfType<MoveTargetScript>();
+	}
+
+	//vastaanotetaan targetNew SetNewTarget scriptistä
+	public void UpdateTargets(Transform targetNew)
+	{
+		nextTarget = targetNew;
+		prevTarget = currentTarget;
+		currentTarget = nextTarget;
+		moveTargetScript.MoveToNext(nextTarget);
+	}
+	//vastaanotetaan setActive YarnCommands scriptistä
+	public void ActivateImage(string setImage)
+	{
+		Debug.Log("tms sai viestin yarnilta");
+		imageName = setImage;
+		Debug.Log("imageName: "+imageName);
+		GameObject.Find(imageName).SetActive(true);        
+	}    
+}		
+</code></pre>
+								
+								</p>
 							</div>
 						</section>
 						<section id="four2">
