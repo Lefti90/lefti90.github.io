@@ -2189,6 +2189,14 @@ input, select, textarea {
 			display: block;
 			margin: 0 0 2.25em 0;
 			width: 100%;
+			max-width: 400px;
+		}
+
+		.image.fit2 {
+			display: block;
+			margin: 0 0 2.25em 0;
+			width: 100%;
+			max-width: 800px;
 		}
 
 			.image.fit img {
