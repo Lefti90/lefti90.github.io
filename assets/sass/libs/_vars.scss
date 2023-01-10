@@ -1,64 +1,49 @@
 // Misc.
 	$misc: (
 		z-index-base:		10000,
-		header-side:		'right'
+		z-index-overlay:	100000,
+		max-spotlight:		20
 	);
 
 // Duration.
 	$duration: (
-		header:				0.5s,
-		transition:			0.2s
+		navPanel:			0.5s,
+		transition:			0.2s,
+		landing-fadein:		1.5s
 	);
 
 // Size.
 	$size: (
-		border-radius:		5px,
-		border-width:		2px,
-		element-height:		2.75em,
-		element-margin:		2.25em,
-		container-width:	45em
+		border-radius:		4px,
+		element-height:		3em,
+		element-margin:		2em,
+		navPanel:			275px,
+		container-width:	70em
 	);
 
 // Font.
 	$font: (
-		family:				('Lato', sans-serif),
-		family-fixed:		('Source Code Pro', monospace),
-		weight:				400,
-		weight-bold:		700
+		family:				('Roboto', Helvetica, sans-serif),
+		family-fixed:		('Courier New', monospace),
+		weight:				100,
+		weight-bold:		300
 	);
 
 // Palette.
 	$palette: (
-		bg:					#fff,
-		fg:					#888,
-		fg-bold:			#777,
-		fg-light:			#aaa,
-		border:				#f4f4f4,
-		border-bg:			#fafafa,
-		border2:			#e4e4e4,
-		border2-bg:			#f4f4f4,
-		border3:			#e0e0e0,
-		border3-bg:			#eaeaea,
-
-		accent1: (
-			bg:				#4acaa8,
-			fg-bold:		#ffffff,
-			fg:				mix(#4acaa8, #ffffff, 25%),
-			fg-light:		mix(#4acaa8, #ffffff, 40%)
-		),
-
-		accent2: (
-			bg:				#989898,
-			fg-bold:		#ffffff,
-			fg:				mix(#989898, #ffffff, 25%),
-			fg-light:		mix(#989898, #ffffff, 40%)
-		),
-
-		header: (
-			bg:				#4acaa8,
-			fg-bold:		#ffffff,
-			fg:				mix(#4acaa8, #ffffff, 25%),
-			fg-light:		mix(#4acaa8, #ffffff, 40%),
-			border:			mix(#4acaa8, #ffffff, 90%)
-		)
+		bg:					#1c1d26,
+		bg-transparent:		rgba(23,24,32,0.95),
+		fg-bold:			#ffffff,
+		fg:					rgba(255,255,255,0.75),
+		fg-light:			rgba(255,255,255,0.5),
+		fg-lighter:			rgba(255,255,255,0.15),
+		border:				rgba(255,255,255,0.3),
+		border-bg:			rgba(255,255,255,0.075),
+		border2:			rgba(255,255,255,0.5),
+		border2-bg:			rgba(255,255,255,0.25),
+		accent1:			#e44c65,
+		accent2:			#272833,
+		accent2-transparent:rgba(39,40,51,0.965),
+		accent3:			#5480f1,
+		accent4:			#39c088
 	);
