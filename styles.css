@@ -91,6 +91,17 @@ html {
     zoom: 100%;
 }
 
+@media only screen and (max-width: 900px){
+    :root {
+        --zoom: 0.5;
+    }
+
+    /* responsive zoom fix 2/2 */
+    html {
+        zoom: 50%;
+    }
+}
+
 /* set globals */
 * {
     font-family: var(--global-font);
@@ -792,6 +803,7 @@ main h2, main p{
     flex-wrap: wrap;
     height: 5vh;
     font-size: 1.2em;
+    margin-bottom: 2vh; /* on mobile the footer is blocked by browser ui */
 }
 
 .footer-socials {
