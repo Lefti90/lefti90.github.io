@@ -1,0 +1,233 @@
+/* #region DEBUG */
+
+/* *:hover { 
+   outline:1px blue solid;
+}  */
+
+/* div { border: 1px dotted pink }
+p   { border: 1px solid green }
+a   { border: 2px solid yellow }
+li  { border: 1px dashed cyan }
+img { border: 1px solid purple} */
+
+/* #endregion DEBUG */
+
+/* variables */
+:root {
+
+    /* about */
+    --about-padding-1: 5px;
+    --about-padding-2: 10px;
+    /* --about-text-color: #9aa83a; */
+    --about-text-size-1: 2em;
+    --about-text-size-2: 1.3em;
+    --about-category-bgc: #ffff00;
+}
+
+.about,
+.workhistory-wrapper {
+    background-color: var(--background-color);
+}
+
+.about-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-wrapper li {
+    font-size: 1.3em;
+    padding-left: 1em;
+}
+
+.hilight {
+    color: orange;
+}
+
+.hilight:hover::after {
+    position: absolute;
+    content: " <3";
+}
+
+.hilight::before {
+    color: orange;
+    content: ">";
+}
+
+.hilight::after {
+    /* position: absolute; */
+    content: " <";
+}
+
+.about-wrapper p {
+    font-size: 1.5em;
+    padding-left: 1em;
+}
+
+/* about */
+/* #region about */
+
+.about-intro,
+.about-outro {
+    margin-top: var(--gap);
+    padding: 5px;
+    background-color: var(--background-color);
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    margin: var(--gap);
+    width: 100%;
+}
+
+.about-wrapper-left, .about-wrapper-right {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    left: 0;
+    top: 0;
+    width: 1px;
+    background-color: #aaa;
+}
+
+.about-header,
+.about-footer {
+    display: flex;
+    align-items: center;
+}
+
+.about-title {
+    display: flex;
+    flex-direction: row;
+    font-size: 2em;
+    padding-right: var(--about-padding-1);
+    text-shadow: #aaa 0 1px 0;
+}
+
+.about-line {
+    flex: 1;
+    height: 1px;
+    background-color: #aaa;
+}
+
+.about-tag {
+    margin-left: var(--about-padding-1);
+    font-size: 1.5em;
+}
+
+/* CONTENT */
+.about-content-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+/* IMG */
+.about-image-wrapper {
+    outline: 1px solid #aaa;
+    display: flex;
+    overflow: hidden;
+    height: 20cqh;
+    width: 20cqw;
+    justify-content: center;
+    min-width: 20%;
+}
+
+.about-image-wrapper a {
+    justify-content: center;
+    object-fit: cover;
+    height: 100cqh;
+}
+
+.about-image-wrapper img {
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* CONTENT / TEXT */
+.about-content-text-wrapper {
+    width: auto;
+    margin: var(--gap);
+    width: 100%;
+}
+
+.about-content-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-link {
+    font-size: var(--about-text-size-2);
+    padding-left: var(--about-padding-1);
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.about-category {
+    display: flex;
+    flex-direction: row;
+    text-shadow: #0909098f 0px 1px 0px, 
+                #0909098f 1px 0px 0px, 
+                #0909098f -1px 0px 0px, 
+                #0909098f 1px -1px 0px;
+
+    outline: 1px solid var(--link-color);
+    font-size: var(--about-text-size-2);
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: var(--about-padding-1);
+    padding-right: var(--about-padding-1);
+    background-color: #99a83a7c;
+    color: var(--link-color);
+}
+
+.about-date {
+    display: flex;
+    flex-direction: row;
+    font-size: var(--about-text-size-2);
+    padding-left: var(--about-padding-1);
+}
+
+.workhistory-wrapper {
+    margin: 5px 0px 5px 0px;
+    padding: 5px;
+}
+
+.workhistory-wrapper h2 {
+    font-size: 2.3em;
+}
+
+.workhistory-entry {
+    outline: 1px solid #aaa;
+    margin: 5px;
+    padding: 10px;
+}
+
+.workhistory-entry h3 {
+    font-size: 2em;
+    padding-left: 0.5em;
+}
+
+.workhistory-entry-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.workhistory-entry-title h3 {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+}
+
+.workhistory-date {
+    width: 25%;
+}
+
+.workhistory-date p{
+    font-size: 1.6em;
+    text-align: right!important;
+    padding: 0em 0em 0em 0em;
+    margin: 0;
+}
+
+/* #endregion about */

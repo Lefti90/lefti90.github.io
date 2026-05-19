@@ -1,0 +1,108 @@
+<rel="stylesheet" href="styles.css">
+<body>
+    <div class="header">
+<div class="top-menu">
+    <!-- FONT CHANGER -->
+                <div class="font-options">                    
+                    <form class="font-form">
+                        <span class="font-label">FONT:</span>
+                        <!-- ON -->
+                    <div class="font-option">
+                        <input type="radio" id="fontDefault" name="font-state" value="default" onchange="changeFont()">
+                        <label for="fontDefault">Default</label>
+                    </div>
+                    <!-- BOLD -->
+                    <div class="font-option">
+                        <input type="radio" id="fontBold" name="font-state" value="bold" onchange="changeFont()">
+                        <label for="fontBold">S-Bold</label>
+                    </div>
+                    <!-- SIMPLE -->
+                    <div class="font-option">
+                        <input type="radio" id="fontSimple" name="font-state" value="simple" onchange="changeFont()">
+                        <label for="fontSimple">Simple</label>
+                    </form>    
+                    </div>
+                </div>
+                <!-- FX OPTIONS -->
+        <div class="fx-options">
+            <form class="fx-form">
+                <span class="fx-svg-wrapper">
+                    <svg class="fx-svg" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:svg="http://www.w3.org/2000/svg"
+                                version="1.1"
+                                width="22" height="22"
+                                viewBox="0 0 800 800">
+                                <path id="path1"
+                                        stroke="white" stroke-width="4"
+                                        d="M 774.38,650.66
+                                        C 774.38,650.66 426.36,302.67 426.36,302.67
+                                            392.23,268.50 336.83,268.50 302.67,302.67
+                                            268.52,336.82 268.52,392.20 302.67,426.38
+                                            302.67,426.38 650.67,774.39 650.67,774.39
+                                            684.88,808.54 740.21,808.54 774.41,774.39
+                                            808.52,740.18 808.54,684.84 774.38,650.66 Z
+                                        M 396.54,454.70
+                                        C 396.54,454.70 335.45,393.59 335.45,393.59
+                                            327.38,385.46 323.44,375.11 323.44,364.49
+                                            323.44,353.91 327.36,343.56 335.42,335.43
+                                            343.56,327.37 353.94,323.40 364.53,323.40
+                                            375.12,323.37 385.50,327.37 393.61,335.47
+                                            393.61,335.47 454.70,396.56 454.70,396.56
+                                            454.70,396.56 396.54,454.70 396.54,454.70 Z
+                                        M 260.38,260.40
+                                        C 315.06,205.77 403.99,205.77 458.60,260.40
+                                            458.60,260.40 607.45,409.25 607.45,409.25
+                                            607.45,409.25 707.74,275.05 707.74,275.05
+                                            707.74,275.05 555.86,230.32 555.86,230.32
+                                            555.86,230.32 474.99,0.00 474.99,0.00
+                                            474.99,0.00 302.30,101.11 302.30,101.11
+                                            302.30,101.11 80.96,80.92 80.96,80.92
+                                            80.96,80.92 80.94,80.91 80.94,80.91
+                                            80.94,80.91 80.94,80.92 80.94,80.92
+                                            80.94,80.92 80.89,80.92 80.89,80.92
+                                            80.89,80.92 80.94,80.97 80.94,80.97
+                                            80.94,80.97 101.08,302.32 101.08,302.32
+                                            101.08,302.32 0.00,474.99 0.00,474.99
+                                            0.00,474.99 230.30,555.84 230.30,555.84
+                                            230.30,555.84 275.06,707.73 275.06,707.73
+                                            275.06,707.73 409.25,607.43 409.25,607.43
+                                            409.25,607.43 260.40,458.62 260.40,458.62
+                                            205.75,403.99 205.75,315.06 260.38,260.40 Z">
+                                </path>
+                    </svg>
+                </span>
+                <!-- ON -->
+                <div class="fx-option">
+                    <input type="radio" id="default" name="fx-state" value="default" onchange="changeFx()">
+                    <label for="default">ON</label>
+                </div>
+                <!-- OFF -->
+                <div class="fx-option">
+                    <input type="radio" id="off" name="fx-state" value="off" onchange="changeFx()">
+                    <label for="off">Off</label>
+                </div>
+                <!-- ??? -->
+                <div class="fx-option">
+                    <input type="radio" id="bonkers" name="fx-state" value="bonkers" onchange="changeFx()">
+                    <label for="bonkers">???</label>
+                </div>
+            </form>
+        </div>
+</div>
+        <div class="header-herotext-wrapper">
+            <div class="header-herotext-name">
+                <p>Ilkka</p>
+                <p>Säkkinen</p>
+            </div>
+            <div class="header-herotext-logo">
+                <p>>IS_</p>
+            </div>
+            <div class="header-herotext-flavor">
+                <p># Programmer</p>
+                <p># Problem solver</p>
+                <p># That IT guy who friends and family call when: <span id="random-flavor"> ${reason}</span>.</p>
+                <!-- <p id="header-error-text" style= color:red;>Error loading reasons! <br> Please try reloading the page.</p> -->
+            </div>
+        </div>
+    </div>
+</body>

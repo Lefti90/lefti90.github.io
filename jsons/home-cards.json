@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Looking for work",
+    "tag": "#recruit",
+    "content": "Need a developer for your site, app or game? Let's discuss and find out if we could help each other out!",
+    "link": "/contact.html",
+    "linktext": "Contact me",
+    "category": "Career",
+    "date": "19.05.2026"
+  },
+  {
+    "title": "Portfolio revamp",
+    "tag": "#webdev",
+    "content": "I wanted to challenge myself and make a portfolio with just html5, javascript and css. Goal was to do the site in components and to be modular. Normally this kind of project, I would have done with some framework like React, but I wanted to see if I could do this without 3rd party libraries or frameworks. On the surface it might not seem that special, but under the hood it has some things that developers could find interesting.",
+    "link": "#",
+    "linktext": "",
+    "category": "Web development",
+    "date": "12.05.2026"
+  }
+]

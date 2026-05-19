@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Revamped Portfolio",
+    "picture": "img/projects/portfolio_2026.png",
+    "tag": "#webdev",
+    "platform": "#",
+    "content": "I wanted to challenge myself and make a portfolio with just html5, javascript and css. Goal was to do the site in components and to be modular. Normally this kind of project, I would have done with some framework like React, but I wanted to see if I could do this without 3rd party libraries or frameworks.<br><br> - HTML5/JS/CSS",
+    "link": "#",
+    "linktext": "You dont need a link. You are already here ( ͡° ͜ʖ ͡°)",
+    "category": "Website",
+    "date": "5/2026"
+  },
+  {
+    "title": "Roshan Timer",
+    "picture": "img/projects/roshan_timer.png",
+    "tag": "#webdev",
+    "platform": "#",
+    "content": "Roshan Timer app for Dota2 <br><br> - Firebase/React/PWA/Photoshop",
+    "link": "https://roshan-timer-is.web.app/",
+    "linktext": "Link to app",
+    "category": "Web app",
+    "date": "9/2026"
+  },
+  {
+    "title": "Game of Thrones Game Jam 2022",
+    "picture": "img/projects/med/med_rect_pic_goty22.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Group project GOTy22 <br><br> Mobile <br> Hypercasual <br><br> Huge letdown when we found out that this event had nothing to do with Game Of Thrones series :D <br><br> - C#/Unity/Blender/Photoshop",
+    "link": "https://www.youtube.com/shorts/og-PY_ZYpY0",
+    "linktext": "Video",
+    "category": "Mobile game",
+    "date": "2/2022"
+  },
+  {
+    "title": "Keypress Randomizer",
+    "picture": "img/projects/keypress_randomizer.png",
+    "tag": "#python",
+    "platform": "#",
+    "content": "Keypress randomizer for PC <br><br> Totally not made to avoid AFK detection in games <br><br> - First python project ",
+    "link": "/img/projects/keypress_randomizer.png",
+    "linktext": "Picture",
+    "category": "Windows app",
+    "date": "2/2022"
+  },
+  {
+    "title": "Super Shaker",
+    "picture": "img/projects/med/med_rect_pic_shaker.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Add Inspiration internship <br><br> Mobile <br> Hypercasual <br><br> - C#/Unity/Blender/Photoshop",
+    "link": "https://www.youtube.com/watch?v=WSWgMVLAhi0",
+    "linktext": "Add Inspiration demo reel - Video",
+    "category": "Mobile game",
+    "date": "6/2021"
+  },
+  {
+    "title": "Math Sprinters",
+    "picture": "img/projects/med/med_rect_pic_math.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Add Inspiration internship <br><br> Mobile <br> Hypercasual <br><br> - C#/Unity/Blender/Photoshop",
+    "link": "https://www.youtube.com/watch?v=WSWgMVLAhi0",
+    "linktext": "Add Inspiration demo reel - Video",
+    "category": "Mobile game",
+    "date": "4/2021"
+  },
+  {
+    "title": "Tap'n'Roll",
+    "picture": "img/projects/med/med_rect_pic_ball_scroller.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Add Inspiration internship <br><br> Mobile <br> Hypercasual <br><br> - C#/Unity/Blender/Photoshop",
+    "link": "https://www.youtube.com/watch?v=WSWgMVLAhi0",
+    "linktext": "Add Inspiration demo reel - Video",
+    "category": "Mobile game",
+    "date": "2/2021"
+  },
+  {
+    "title": "Beach Bouncer",
+    "picture": "img/projects/med/med_rect_pic_beach_bouncer.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Add Inspiration internship <br><br> Mobile <br> Hypercasual <br><br> - C#/Unity/Blender/Photoshop",
+    "link": "https://www.youtube.com/watch?v=WSWgMVLAhi0",
+    "linktext": "Add Inspiration demo reel - Video",
+    "category": "Mobile game",
+    "date": "1/2021"
+  },
+  {
+    "title": "Rift Reapers",
+    "picture": "img/projects/rift-reapers.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Video Game Programming course @ University of Applied Sciences JAMK <br><br> PC <br> Tower Defence <br><br> - C#/Unity/Blender/Photoshop",
+    "link": "https://www.youtube.com/watch?v=LfovtLbMiAE",
+    "linktext": "Video",
+    "category": "PC Game",
+    "date": "5/2019"
+  },
+  {
+    "title": "This is the end - TITE",
+    "picture": "img/projects/tite.png",
+    "tag": "#gamedev",
+    "platform": "#",
+    "content": "Games with Construct course @ University of Applied Sciences JAMK <br><br> Browser/PC <br> Tile Smasher <br><br> - Construct/Photoshop",
+    "link": "https://homes.jamk.fi/~m2241/ThisIsTheEnd/",
+    "linktext": "Testsite 404 :(",
+    "category": "Browser game",
+    "date": "1/2019"
+  }
+]
