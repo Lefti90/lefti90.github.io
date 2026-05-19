@@ -146,7 +146,7 @@ body,
 
 body {
     min-width: var(--site-min-width);
-    background: #0000005e url(/img/kuokkalan_silta.png) fixed no-repeat;
+    background: #0000005e url(/img/kuokkalan_silta.png) fixed;
     background-size: cover;
     background-position: 45% 20%;
     background-blend-mode: multiply;
@@ -174,10 +174,11 @@ a:hover {
 
 .header {
     background-image: url(/img/kuokkalan_silta_flipped.png);
-    background-size: cover;
+    background-size: fill;
     background-position: 50% 0%;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
+    margin-top: 1vh;
     gap: var(--gap);
     outline: 1px solid #aaa;
 }
