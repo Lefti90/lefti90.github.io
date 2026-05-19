@@ -169,9 +169,11 @@ a:hover {
 /* #region Header */
 
 .header {
+    background-image: url(/img/kuokkalan_silta.png);
+    background-size: cover;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
     gap: var(--gap);
-    /* min-height: 9vh; */
-    /* min-height: calc(12vh / var(--zoom)); */
     outline: 1px solid #aaa;
 }
 
@@ -542,6 +544,10 @@ a:hover {
     display: flex;
     min-height: 100vh;
     padding: var(--gap);
+    background-image: url(/img/kuokkalan_silta.png);
+    background-size: cover;
+    background-position: center;
+    /* background-repeat: no-repeat; */
 }
 
 @media only screen and (max-width: 900px){
