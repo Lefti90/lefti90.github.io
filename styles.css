@@ -146,6 +146,10 @@ body,
 
 body {
     min-width: var(--site-min-width);
+    background: #0000005e url(/img/kuokkalan_silta.png) fixed no-repeat;
+    background-size: cover;
+    background-position: 45% 20%;
+    background-blend-mode: multiply;
 }
 
 .body-wrapper {
@@ -169,10 +173,11 @@ a:hover {
 /* #region Header */
 
 .header {
-    background-image: url(/img/kuokkalan_silta.png);
+    background-image: url(/img/kuokkalan_silta_flipped.png);
     background-size: cover;
-    background-position: 0% 100%;
+    background-position: 50% 0%;
     background-repeat: no-repeat;
+    background-blend-mode: multiply;
     gap: var(--gap);
     outline: 1px solid #aaa;
 }
@@ -543,11 +548,8 @@ a:hover {
 .container {
     display: flex;
     min-height: 100vh;
-    padding: var(--gap);
-    background-image: url(/img/kuokkalan_silta.png);
-    background-size: cover;
-    background-position: center;
-    /* background-repeat: no-repeat; */
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
 }
 
 @media only screen and (max-width: 900px){
