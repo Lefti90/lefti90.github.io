@@ -355,7 +355,8 @@ a:hover {
 /* HEROTEXT DESKTOP */
 /* #region Herotext-desktop */
 .header-herotext-wrapper {
-    /* padding: var(--gap); */
+    padding-left: var(--gap);
+    padding-right: var(--gap) ;
     height: 154.40px;
     display: flex;
     justify-content: space-around;
