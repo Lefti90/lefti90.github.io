@@ -12,7 +12,6 @@ async function loadCards() {
     const cards = await response.json();
 
     return new Promise((resolve, reject) => {
-        // setTimeout(() => {
             if(cards && response.status == 200){
                       // Sort newest to oldest (parses DD.MM.YYYY format)
                     cards.sort((a, b) => {
@@ -58,7 +57,6 @@ async function loadCards() {
             }else{
                 reject("Cards not loaded :(");
             }
-        // }, 0);
     });
 }
 
@@ -67,12 +65,11 @@ function checkErrors(){
     return new Promise((resolve, reject) => {
 
         if(!document.getElementById('error-text')){
-            reject("Cards not loaded, reloading ❗❗❗ ...");
+            reject("Cards not loaded, reloading...");
             window.location.reload();
         }else{
             resolve("No errors!");
         }
-        console.log(document.getElementById('error-text'));
     });
 }
 
